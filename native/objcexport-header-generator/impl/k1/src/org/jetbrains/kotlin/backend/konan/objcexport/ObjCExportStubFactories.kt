@@ -57,6 +57,7 @@ fun ObjCInterfaceImpl(
     members: List<ObjCExportStub> = emptyList(),
     attributes: List<String> = emptyList(),
     comment: ObjCComment? = null,
+    nativeEnum: ObjCNativeEnum? = null,
 ) = ObjCInterfaceImpl(
     name = name,
     comment = comment,
@@ -67,7 +68,8 @@ fun ObjCInterfaceImpl(
     categoryName = categoryName,
     generics = generics,
     superClass = superClass,
-    superClassGenerics = superClassGenerics
+    superClassGenerics = superClassGenerics,
+    nativeEnum = nativeEnum
 )
 
 fun ObjCMethod(

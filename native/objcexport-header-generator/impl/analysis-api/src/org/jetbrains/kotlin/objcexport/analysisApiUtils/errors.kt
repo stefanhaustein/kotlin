@@ -66,7 +66,8 @@ internal val KtObjCExportSession.errorInterface
         categoryName = null,
         generics = emptyList(),
         superClass = getDefaultSuperClassOrProtocolName().objCName,
-        superClassGenerics = emptyList()
+        superClassGenerics = emptyList(),
+        nativeEnum = null,
     )
 
 internal val objCErrorType = ObjCClassType(errorClassName, extras = objCTypeExtras {

@@ -113,8 +113,21 @@ public actual annotation class CName(actual val externName: String = "", actual 
 @Retention(AnnotationRetention.BINARY)
 @MustBeDocumented
 @ExperimentalObjCName
-@SinceKotlin("1.8")
+@SinceKotlin("2.2.21")
 public actual annotation class ObjCName(actual val name: String = "", actual val swiftName: String = "", actual val exact: Boolean = false)
+
+/**
+ * Instructs the Kotlin compiler to generate a NS_ENUM typedef for the annotated enum class. The name of the generated type will
+ * be the name of the enum type with "_Enum" appended. This name can be overridden with the "name" parameter, which is treated
+ * as an exact name. The enum literals will be prefixed with the type name and an underscore, as they live in a global namespace.
+ * Swift naming will automatically remove these prefixes.
+ */
+@Target(AnnotationTarget.CLASS)
+@Retention(AnnotationRetention.BINARY)
+@MustBeDocumented
+@ExperimentalObjCName
+@SinceKotlin("2.2.21")
+public actual annotation class ObjCEnum(actual val name: String = "")
 
 /**
  * Meta-annotation that instructs the Kotlin compiler to remove the annotated class, function or property from the public Objective-C API.

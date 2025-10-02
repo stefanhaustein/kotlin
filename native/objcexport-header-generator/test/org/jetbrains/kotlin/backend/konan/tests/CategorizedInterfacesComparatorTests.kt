@@ -79,4 +79,5 @@ private fun ObjCInterfaceImpl(
     generics = emptyList(),
     superClass = null,
     superClassGenerics = emptyList(),
+    nativeEnum = null,
 )

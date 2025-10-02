@@ -49,7 +49,7 @@ abstract class ObjCTopLevel : ObjCExportStub
 class ObjCNativeEnum(
     override val name: String,
     val literals: List<String>,
-) : ObjCTopLevel() {
+) : ObjCExportStub {
     override val comment: ObjCComment?
         get() = null
     override val origin: ObjCExportStubOrigin?
@@ -70,6 +70,7 @@ abstract class ObjCInterface : ObjCClass() {
     abstract val generics: List<ObjCGenericTypeDeclaration>
     abstract val superClass: String?
     abstract val superClassGenerics: List<ObjCNonNullReferenceType>
+    abstract val nativeEnum: ObjCNativeEnum?
 }
 
 class ObjCComment(val contentLines: List<String>) {
@@ -103,6 +104,7 @@ class ObjCInterfaceImpl(
     override val superClass: String?,
     override val superClassGenerics: List<ObjCNonNullReferenceType>,
     override val extras: Extras = emptyExtras(),
+    override val nativeEnum: ObjCNativeEnum?,
 ) : ObjCInterface()
 
 class ObjCMethod(

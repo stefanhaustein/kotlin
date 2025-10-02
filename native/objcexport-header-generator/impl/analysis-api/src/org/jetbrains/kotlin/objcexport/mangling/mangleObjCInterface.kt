@@ -15,7 +15,8 @@ internal fun ObjCExportContext.mangleObjCInterface(objCInterface: ObjCInterface,
         generics = mangleObjCParametersGenerics(objCInterface.generics),
         superClass = objCInterface.superClass,
         superClassGenerics = mangleSuperClassGenerics(objCInterface.superClassGenerics),
-        extras = objCInterface.extras
+        extras = objCInterface.extras,
+        nativeEnum = objCInterface.nativeEnum,
     )
 }
 

@@ -66,7 +66,8 @@ fun ObjCExportContext.translateToObjCTopLevelFacade(file: KtResolvedObjCExportFi
         categoryName = null,
         generics = emptyList(),
         superClass = exportSession.getDefaultSuperClassOrProtocolName().objCName,
-        superClassGenerics = emptyList()
+        superClassGenerics = emptyList(),
+        nativeEnum = null,
     )
     return null
 }

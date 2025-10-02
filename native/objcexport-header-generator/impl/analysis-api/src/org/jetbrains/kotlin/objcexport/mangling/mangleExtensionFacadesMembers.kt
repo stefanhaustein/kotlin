@@ -35,7 +35,8 @@ internal fun mangleExtensionFacadesMembers(stubs: List<ObjCExportStub>): List<Ob
                 generics = stub.generics,
                 superClass = stub.superClass,
                 superClassGenerics = stub.superClassGenerics,
-                extras = stub.extras
+                extras = stub.extras,
+                nativeEnum = stub.nativeEnum,
             )
         } else stub
     }

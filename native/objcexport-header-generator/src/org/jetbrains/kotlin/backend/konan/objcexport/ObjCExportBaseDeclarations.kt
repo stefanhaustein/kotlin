@@ -66,7 +66,8 @@ fun objCBaseDeclarations(
             attributes = emptyList(),
             members = emptyList(),
             superClass = null,
-            superClassGenerics = emptyList()
+            superClassGenerics = emptyList(),
+            nativeEnum = null,
         )
     }
 
@@ -117,7 +118,8 @@ fun objCBaseDeclarations(
             superProtocols = emptyList(),
             generics = emptyList(),
             superClass = null,
-            superClassGenerics = emptyList()
+            superClassGenerics = emptyList(),
+            nativeEnum = null
         )
     }
 
@@ -223,6 +225,7 @@ private fun objCInterface(
     members: List<ObjCExportStub> = emptyList(),
     attributes: List<String> = emptyList(),
     comment: ObjCComment? = null,
+    nativeEnum: ObjCNativeEnum? = null,
 ): ObjCInterface = ObjCInterfaceImpl(
     name = name.objCName,
     generics = generics,
@@ -233,7 +236,8 @@ private fun objCInterface(
     members = members,
     attributes = attributes.plus(name.toNameAttributes()),
     comment = comment,
-    categoryName = null
+    categoryName = null,
+    nativeEnum = nativeEnum,
 )
 
 private fun objCProtocol(

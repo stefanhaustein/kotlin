@@ -433,6 +433,9 @@ private abstract class LazyObjCInterface(
 
     final override val comment: ObjCComment?
         get() = realStub.comment
+
+    override val nativeEnum: ObjCNativeEnum?
+        get() = realStub.nativeEnum
 }
 
 private abstract class LazyObjCProtocol(
