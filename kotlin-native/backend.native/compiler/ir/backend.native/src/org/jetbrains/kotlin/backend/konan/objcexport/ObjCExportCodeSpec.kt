@@ -12,6 +12,7 @@ import org.jetbrains.kotlin.backend.konan.descriptors.isInterface
 import org.jetbrains.kotlin.builtins.KotlinBuiltIns
 import org.jetbrains.kotlin.descriptors.*
 import org.jetbrains.kotlin.ir.ObsoleteDescriptorBasedAPI
+import org.jetbrains.kotlin.ir.declarations.IrClass
 import org.jetbrains.kotlin.ir.symbols.*
 import org.jetbrains.kotlin.ir.util.IdSignature
 import org.jetbrains.kotlin.ir.util.SymbolTable
@@ -89,6 +90,9 @@ internal fun ObjCExportedInterface.createCodeSpec(symbolTable: SymbolTable): Obj
             }
 
             if (descriptor.kind == ClassKind.ENUM_CLASS) {
+                // TODO: Gate by annotation
+                methods.add(ObjCGetterForNSEnumType(irClassSymbol.owner)) // This looks dodgy
+
                 descriptor.enumEntries.mapTo(methods) {
                     ObjCGetterForKotlinEnumEntry(symbolTable.descriptorExtension.referenceEnumEntry(it), namer.getEnumEntrySelector(it))
                 }
@@ -222,6 +226,13 @@ internal class ObjCGetterForKotlinEnumEntry(
 ) : ObjCMethodSpec() {
     override fun toString(): String =
             "ObjC spec of getter `$selector` for `$irEnumEntrySymbol`"
+}
+
+internal class ObjCGetterForNSEnumType(
+        val irClass: IrClass
+) : ObjCMethodSpec() {
+    override fun toString(): String =
+            "ObjC spec of toNSEnum()"
 }
 
 internal class ObjCClassMethodForKotlinEnumValuesOrEntries(
